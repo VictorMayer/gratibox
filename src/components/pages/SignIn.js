@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import Loader from "react-loader-spinner";
+import { useNavigate } from "react-router";
 import { sendAlert } from "../shared/alerts";
+import { useContext, useEffect } from "react";
 import { getUser } from "../../services/Gratibox";
 import { useState } from "react/cjs/react.development";
 import { WelcomeHeader, SignInput, SignStyles, SignButton, SignContainer, SwitchSign } from "../shared/styled";
-import { useNavigate } from "react-router";
-import { useContext, useEffect } from "react";
 import UserContext from '../../contexts/UserContext.js';
 
 export default function SignIn() {
@@ -15,8 +15,7 @@ export default function SignIn() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(user.token);
-        if (user.token) navigate('/subscription/details');   
+        if (user.token) navigate('/subscription/intro');   
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     function login(e) {
@@ -52,8 +51,6 @@ export default function SignIn() {
         </SignContainer>
     )
 }
-
-
 
 const BlankSpace = styled.div`
     height: 70px;

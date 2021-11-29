@@ -27,7 +27,7 @@ export default function SignUp() {
                 console.log(answer.response);
                 setData({ ...data, password: "", confirmPassword: "", });
                 setRequesting(false);
-                if (!answer.response) return sendAlert('error', 'Opa! :(', 'Não foi possivel conectar-se ao servidor!');
+                if (!answer.response.data) return sendAlert('error', 'Opa! :(', 'Não foi possivel conectar-se ao servidor!');
                 return sendAlert('error', 'Opa! :(', answer.response.data);
             });
 
