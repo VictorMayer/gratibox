@@ -10,17 +10,17 @@ import styled from "styled-components"
 export default function Address() {
     const { subInfo, user } = useContext(UserContext);
     const [address, setAddress] = useState({ full_name: "", description: "", postal_code: "", city: "", state_id: "", });
-    const navigate = useNavigate;
+    const navigate = useNavigate();
 
     function subscribe() {
         const { full_name, description, postal_code, city, state_id } = address;
         if (!full_name || !description || !postal_code || !city || !state_id) return sendAlert('info', 'Opa...', 'Todos os campos devem ser devidamente preenchidos');
-        if (Number(postal_code.replace('-','')).toString().length !== 8) return sendAlert('warning', 'Opa...','CEP inválido');
+        if (postal_code.replace('-','').toString().length !== 8) return sendAlert('warning', 'Opa...','CEP inválido');
         sendSubscription({ ...subInfo, user, address })
             .then(answer => {
-                console.log(answer.data);
                 navigate('/subscription/details');
             }).catch(answer => {
+                console.log(answer.response);
                 sendAlert('error', 'Opa...', answer?.response?.data);
             });
     }
