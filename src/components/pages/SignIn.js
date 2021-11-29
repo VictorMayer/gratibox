@@ -2,9 +2,8 @@ import styled from "styled-components";
 import Loader from "react-loader-spinner";
 import { useNavigate } from "react-router";
 import { sendAlert } from "../shared/alerts";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getUser } from "../../services/Gratibox";
-import { useState } from "react/cjs/react.development";
 import { WelcomeHeader, SignInput, SignStyles, SignButton, SignContainer, SwitchSign } from "../shared/styled";
 import UserContext from '../../contexts/UserContext.js';
 
